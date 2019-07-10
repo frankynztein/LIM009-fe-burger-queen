@@ -1,7 +1,7 @@
 <div style="text-align:center">
   <h2>Nombre del cliente</h2>
-  <input type="text" placeholder="Comprador" [(ngModel)]="buyername"/>
-  <button routerLink="" (click)="makeOrder()">Hacer pedido</button>
-  <a routerLink=""> Click</a>
-  <!-- <p>{{ buyername }}</p> -->
+  <input type="text" placeholder="Comprador" [(ngModel)]="buyerName"/>
+  <button routerLink='/take-order' (click)="takeOrder()">Hacer pedido</button>
 </div>
+
+<router-outlet></router-outlet>

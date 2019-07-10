@@ -2,23 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 
 @Component({
-  selector: 'app-buyer-info',
-  templateUrl: './buyer-info.component.html',
-  styleUrls: ['./buyer-info.component.css']
+  selector: 'app-take-order',
+  templateUrl: './take-order.component.html',
+  styleUrls: ['./take-order.component.css']
 })
-export class BuyerInfoComponent implements OnInit {
+export class TakeOrderComponent implements OnInit {
 
-  buyerName:string = '';
+  buyerName:string;
 
   constructor(private data: DataService) { }
-  
-  takeOrder() {
-    console.log(this.buyerName)
-  }
-  
+
   ngOnInit() {
     this.data.currentBuyerName.subscribe(buyerName => this.buyerName = buyerName)
+    
   }
-  
 
 }
