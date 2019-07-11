@@ -7,7 +7,7 @@ import { DataService } from '../data.service';
   styleUrls: ['./buyer-info.component.css']
 })
 export class BuyerInfoComponent implements OnInit {
-
+  title:string = 'Burger Queen';
   buyerName:string = '';
   hide:boolean = true;
 
