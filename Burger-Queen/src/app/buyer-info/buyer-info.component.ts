@@ -13,7 +13,8 @@ export class BuyerInfoComponent implements OnInit {
   constructor(private data: DataService) { }
   
   takeOrder() {
-    console.log(this.buyerName)
+    console.log(this.buyerName);
+    this.data.changeBuyerName(this.buyerName)
   }
   
   ngOnInit() {
