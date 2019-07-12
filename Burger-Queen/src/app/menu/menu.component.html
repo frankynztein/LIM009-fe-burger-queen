@@ -1,19 +1,10 @@
-<button (click)="getBreakfastMenu()">Desayuno</button>
-<button (click)="getLunchMenu()">Almuerzo y cena</button>
+<button routerLink='/take-order/Breakfast'>Desayuno</button>
+<button routerLink='/take-order/Lunch'>Almuerzo y cena</button>
 <br>
 
-<ul>
-  <li *ngFor="let itemB of itemsBreakfastMenu">{{itemB.name}} - Precio: {{itemB.price}}</li>
-</ul>
 
-<ul>
-  <li *ngFor="let itemL of itemsLunchMenu">{{itemL.name}} - Precio: {{itemL.price}}</li>
-</ul>
 
 <!-- <button *ngFor="let item of itemsBreakfastMenu">{{item.name}} - Precio: {{item.price}}</button> -->
-
-<app-breakfast-menu></app-breakfast-menu>
-
 <!-- <button *ngFor="let itemB of menuBreakfast; let i = index">{{itemB.name}}</button> -->
 
 <!-- <button *ngFor="let itemB of menuBreakfast">{{itemB.name}}</button> -->
