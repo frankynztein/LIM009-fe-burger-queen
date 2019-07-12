@@ -1,21 +1,31 @@
 <!-- <p><a (click)="onSelect()">Desayuno</a></p> -->
 
-<button (click)="openBreakfastMenu()">Desayuno</button>
-<button (click)="openLunchMenu()">Almuerzo y cena</button>
-<br>
+<button routerLink='/take-order/Breakfast'>Desayuno</button>
+<button routerLink='/take-order/Lunch'>Almuerzo y cena</button>
 
-<ul>
+
+
+
+
+
+
+
+<!-- <button (click)="openBreakfastMenu()">Desayuno</button>
+<button (click)="openLunchMenu()">Almuerzo y cena</button>
+<br> -->
+
+<!-- <ul>
   <li *ngFor="let itemL of itemsLunchMenu">{{itemL.name}} - Precio: {{itemL.price}}</li>
-</ul>
+</ul> -->
 
 <!-- <button *ngFor="let item of itemsBreakfastMenu">{{item.name}} - Precio: {{item.price}}</button> -->
-<div *ngIf='!hideB'>
+<!-- <div *ngIf='!hideB'>
   <app-breakfast-menu></app-breakfast-menu>
-</div>
+</div> -->
 
-<div *ngIf='!hideL'>
+<!-- <div *ngIf='!hideL'>
   <app-lunch-menu></app-lunch-menu>
-</div>
+</div> -->
 
 <!-- <button *ngFor="let itemB of menuBreakfast; let i = index">{{itemB.name}}</button> -->
 
