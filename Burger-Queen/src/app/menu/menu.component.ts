@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuService } from '../services/menu.service';
+// import { MenuService } from '../services/menu.service';
+// import { Item } from '../models/Item';
 
 @Component({
   selector: 'app-menu',
@@ -7,22 +8,27 @@ import { MenuService } from '../services/menu.service';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
+  hideB:boolean = true;
+  hideL:boolean = true;
 
-  itemsBreakfastMenu;
-  itemsLunchMenu;
+  // getBreakfastMenu() {
+  //   this.menuService.getItemsB().subscribe(itemsB => this.itemsBreakfastMenu = itemsB)
+  // }
 
-  getBreakfastMenu() {
-    this.menuService.getItems().subscribe(itemsB => this.itemsBreakfastMenu = itemsB)
+  // getLunchMenu() {
+  //   this.menuService.getItemsL().subscribe(itemsL => this.itemsLunchMenu = itemsL)
+  // }
+
+  constructor( ) { }
+
+  ngOnInit() { }
+
+  openBreakfastMenu() {
+    this.hideB = !this.hideB;
   }
 
-  getLunchMenu() {
-    this.menuService.getItemsL().subscribe(itemsL => this.itemsLunchMenu = itemsL)
-  }
-
-  constructor(private menuService: MenuService) { }
-
-  ngOnInit() {
-    
+  openLunchMenu() {
+    this.hideL = !this.hideL;
   }
 
 }
