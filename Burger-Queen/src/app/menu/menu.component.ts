@@ -8,27 +8,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-  hideB:boolean = true;
-  hideL:boolean = true;
-
-  // getBreakfastMenu() {
-  //   this.menuService.getItemsB().subscribe(itemsB => this.itemsBreakfastMenu = itemsB)
-  // }
-
-  // getLunchMenu() {
-  //   this.menuService.getItemsL().subscribe(itemsL => this.itemsLunchMenu = itemsL)
-  // }
+  showBreakfast: boolean = false;
+  showLunch: boolean = false;
 
   constructor( ) { }
 
   ngOnInit() { }
 
   openBreakfastMenu() {
-    this.hideB = !this.hideB;
+    this.showBreakfast = true;
+    this.showLunch = false;
   }
 
   openLunchMenu() {
-    this.hideL = !this.hideL;
+    this.showLunch = true;
+    this.showBreakfast = false;
   }
 
 }

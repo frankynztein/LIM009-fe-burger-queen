@@ -1,4 +1,8 @@
-<ul>
-  <li *ngFor="let itemB of itemsBreakfastMenu">{{itemB.name}} - Precio: {{itemB.price}}</li>
-</ul>
-<p>Prueba Desayuno</p>
+<!-- <ul class="list-group">
+  <li class="list-group-item" *ngFor="let itemBreakfast of itemsBreakfastMenu">{{itemBreakfast.name}} - Precio: {{itemBreakfast.price}}</li>
+</ul> -->
+
+<div class="list-group">
+  <li (click)="addItemToOrder()" class="list-group-item list-group-item-action" *ngFor="let itemBreakfast of itemsBreakfastMenu">{{itemBreakfast.name}}</li>
+</div>
+

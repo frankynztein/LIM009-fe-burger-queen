@@ -1,22 +1,15 @@
-<!-- <p><a (click)="onSelect()">Desayuno</a></p> -->
+<div class="container">
+  <button (click)="openBreakfastMenu()">Desayuno</button>
+  <button (click)="openLunchMenu()">Almuerzo y cena</button>
+  <br>
+</div>
 
-<button (click)="openBreakfastMenu()">Desayuno</button>
-<button (click)="openLunchMenu()">Almuerzo y cena</button>
-<br>
-
-<ul>
-  <li *ngFor="let itemL of itemsLunchMenu">{{itemL.name}} - Precio: {{itemL.price}}</li>
-</ul>
-
-<!-- <button *ngFor="let item of itemsBreakfastMenu">{{item.name}} - Precio: {{item.price}}</button> -->
-<div *ngIf='!hideB'>
+<div *ngIf='showBreakfast'>
   <app-breakfast-menu></app-breakfast-menu>
 </div>
 
-<div *ngIf='!hideL'>
+<div *ngIf='showLunch'>
   <app-lunch-menu></app-lunch-menu>
 </div>
 
-<!-- <button *ngFor="let itemB of menuBreakfast; let i = index">{{itemB.name}}</button> -->
-
-<!-- <button *ngFor="let itemB of menuBreakfast">{{itemB.name}}</button> -->
+<app-order></app-order>

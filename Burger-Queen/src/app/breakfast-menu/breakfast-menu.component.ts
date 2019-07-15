@@ -10,10 +10,18 @@ import { Item } from '../models/Item';
 export class BreakfastMenuComponent implements OnInit {
   itemsBreakfastMenu: Item[];
 
-  constructor(private menuService: MenuService) { }
-
-  ngOnInit() {
-    this.menuService.getItemsB().subscribe(itemsB => this.itemsBreakfastMenu = itemsB)
+  addItemToMenuService() {
+    // let objItemToMenuService = {name: this.itemsBreakfastMenu['name'], 'price':
+    // }
+    
   }
+
+  constructor(private menuService: MenuService) {
+    this.menuService.getItemsBreakfast().subscribe(itemsB => {
+      this.itemsBreakfastMenu = itemsB
+    })
+  }
+
+  ngOnInit() { }
 
 }
