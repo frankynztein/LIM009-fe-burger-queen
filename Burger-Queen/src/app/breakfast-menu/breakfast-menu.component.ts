@@ -9,11 +9,18 @@ import { Item } from '../models/Item';
 })
 export class BreakfastMenuComponent implements OnInit {
   itemsBreakfastMenu: Item[];
+  itemBreakfast:string;
 
-  addItemToMenuService() {
-    // let objItemToMenuService = {name: this.itemsBreakfastMenu['name'], 'price':
-    // }
-    
+  addItemToMenuService(itemBreakfastID) {
+    for (let i = 0; i < this.itemsBreakfastMenu.length; i++) {
+      if (this.itemsBreakfastMenu[i].id === itemBreakfastID) {
+        let objItem = {
+          name: this.itemsBreakfastMenu[i].name,
+          price: this.itemsBreakfastMenu[i].price,
+          quantity: 1}
+      return objItem
+      }
+    }  
   }
 
   constructor(private menuService: MenuService) {
@@ -22,6 +29,7 @@ export class BreakfastMenuComponent implements OnInit {
     })
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+   }
 
 }
