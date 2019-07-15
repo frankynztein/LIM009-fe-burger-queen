@@ -1,18 +1,25 @@
+<!-- <ul>
+  <li *ngFor="let itemLunch of itemsLunchMenu">{{itemLunch.name}} - Precio: {{itemLunch.price}}</li>
+</ul> -->
+
+
+
 <button data-toggle="collapse" data-target="#hamburguesas">Hamburguesas</button>
 <ul>
-    <li id="hamburguesas" class="collapse" *ngFor="let itemL of  hamburguesas">{{itemL.name}} - Precio: {{itemL.price}}</li>
+    <li id="hamburguesas" class="collapse" *ngFor="let itemL of hamburguesas">{{itemL.name}} - Precio: {{itemL.price}}</li>
 </ul>
 <button  data-toggle="collapse" data-target="#bebidas">Bebidas</button>
 <ul>
-    <li id="bebidas" class="collapse" *ngFor="let itemL of  hamburguesas">{{itemL.name}} - Precio: {{itemL.price}}</li>
+    <li id="bebidas" class="collapse" *ngFor="let itemL of bebidas">{{itemL.name}} - Precio: {{itemL.price}}</li>
 </ul>
 
 <button data-toggle="collapse" data-target="#adicionales">Adicionales</button>
 <ul>
-    <li id="adicionales" class="collapse" *ngFor="let itemL of  adicionales">{{itemL.name}} - Precio: {{itemL.price}}</li>
+    <li id="adicionales" class="collapse" *ngFor="let itemL of adicionales">{{itemL.name}} - Precio: {{itemL.price}}</li>
 </ul>
 
 <button data-toggle="collapse" data-target="#acompanamientos">Acompañamientos</button>
 <ul>
     <li id="acompanamientos" class="collapse" *ngFor="let itemL of acompanamientos">{{itemL.name}} - Precio: {{itemL.price}}</li>
-</ul>
+</ul> 
+

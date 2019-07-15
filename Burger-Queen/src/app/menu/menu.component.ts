@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+// import { MenuService } from '../services/menu.service';
+// import { Item } from '../models/Item';
 
 @Component({
   selector: 'app-menu',
@@ -6,12 +8,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-  hide:boolean = true;
- 
-  constructor() { }
+  showBreakfast: boolean = false;
+  showLunch: boolean = false;
 
-  ngOnInit() {
-    
+  constructor( ) { }
+
+  ngOnInit() { }
+
+  openBreakfastMenu() {
+    this.showBreakfast = true;
+    this.showLunch = false;
+  }
+
+  openLunchMenu() {
+    this.showLunch = true;
+    this.showBreakfast = false;
   }
 
 }

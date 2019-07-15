@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuService } from '../services/menu.service';
-
+import { Item } from '../models/Item';
 
 @Component({
   selector: 'app-breakfast-menu',
@@ -8,17 +8,20 @@ import { MenuService } from '../services/menu.service';
   styleUrls: ['./breakfast-menu.component.css']
 })
 export class BreakfastMenuComponent implements OnInit {
+  itemsBreakfastMenu: Item[];
 
-  itemsBreakfastMenu = [];
-
- 
-  
-  constructor(private menuService: MenuService) {
-    this.menuService.getItems().subscribe(itemsB => this.itemsBreakfastMenu = itemsB)
-   }
-
-  ngOnInit() {
+  addItemToMenuService() {
+    // let objItemToMenuService = {name: this.itemsBreakfastMenu['name'], 'price':
+    // }
     
   }
+
+  constructor(private menuService: MenuService) {
+    this.menuService.getItemsBreakfast().subscribe(itemsB => {
+      this.itemsBreakfastMenu = itemsB
+    })
+  }
+
+  ngOnInit() { }
 
 }

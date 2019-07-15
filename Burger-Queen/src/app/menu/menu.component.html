@@ -1,11 +1,15 @@
-<div *ngIf="hide">
-<button routerLink='/take-order/Breakfast'>Desayuno</button>
-<button routerLink='/take-order/Lunch'>Almuerzo y cena</button>
-<br>
+<div class="container">
+  <button (click)="openBreakfastMenu()">Desayuno</button>
+  <button (click)="openLunchMenu()">Almuerzo y cena</button>
+  <br>
 </div>
 
+<div *ngIf='showBreakfast'>
+  <app-breakfast-menu></app-breakfast-menu>
+</div>
 
-<!-- <button *ngFor="let item of itemsBreakfastMenu">{{item.name}} - Precio: {{item.price}}</button> -->
-<!-- <button *ngFor="let itemB of menuBreakfast; let i = index">{{itemB.name}}</button> -->
+<div *ngIf='showLunch'>
+  <app-lunch-menu></app-lunch-menu>
+</div>
 
-<!-- <button *ngFor="let itemB of menuBreakfast">{{itemB.name}}</button> -->
+<app-order></app-order>
