@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuService } from '../services/menu.service';
 import { Item } from '../models/Item';
+import { OrdersService } from '../services/orders.service';
 
 @Component({
   selector: 'app-breakfast-menu',
@@ -10,24 +11,34 @@ import { Item } from '../models/Item';
 export class BreakfastMenuComponent implements OnInit {
   itemsBreakfastMenu: Item[];
   itemBreakfast:string;
+  productAdded:object;
 
   addItemToMenuService(itemBreakfastID) {
     for (let i = 0; i < this.itemsBreakfastMenu.length; i++) {
       if (this.itemsBreakfastMenu[i].id === itemBreakfastID) {
-        let objItem = {
+        this.productAdded = {
+          id: itemBreakfastID,
           name: this.itemsBreakfastMenu[i].name,
           price: this.itemsBreakfastMenu[i].price,
           quantity: 1}
-      return objItem
+          
+        //  console.log(objItem)
       }
     }  
+    // return console.log(this.productAdded)
+    this.orderService.addProduct(this.productAdded)
+    console.log(this.productAdded);
+    
   }
 
-  constructor(private menuService: MenuService) {
+  constructor(private menuService: MenuService, private orderService: OrdersService) {
     this.menuService.getItemsBreakfast().subscribe(itemsB => {
       this.itemsBreakfastMenu = itemsB
     })
+    
   }
+
+  
 
   ngOnInit() {
    }
