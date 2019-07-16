@@ -9,19 +9,29 @@ import { Item } from '../models/Item';
 })
 export class BreakfastMenuComponent implements OnInit {
   itemsBreakfastMenu: Item[];
+  itemBreakfast:string;
+  pedidos = []
 
-  addItemToMenuService() {
-    // let objItemToMenuService = {name: this.itemsBreakfastMenu['name'], 'price':
-    // }
+  addItemToMenuService(itemBreakfastID) {
+    for (let i = 0; i < this.itemsBreakfastMenu.length; i++) {
+      if (this.itemsBreakfastMenu[i].id === itemBreakfastID) {
+        let objItem = {
+          name: this.itemsBreakfastMenu[i].name,
+          price: this.itemsBreakfastMenu[i].price,
+          quantity: 1}
+      console.log (this.pedidos.push(objItem))
+      }
+    }  
     
   }
-
+  
   constructor(private menuService: MenuService) {
     this.menuService.getItemsBreakfast().subscribe(itemsB => {
       this.itemsBreakfastMenu = itemsB
     })
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+   }
 
 }
