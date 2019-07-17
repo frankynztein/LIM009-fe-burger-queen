@@ -8,7 +8,8 @@ import { BehaviorSubject } from 'rxjs';
 }
 )
 export class OrdersService {
-  arrProduct = [];
+  arrProduct = [{name: 'pollo', quantity:1}];
+  filteredArrProduct = [];
   
   // arrProductUnique = Array.from(new Set(this.arrProduct));  
   
@@ -19,18 +20,30 @@ export class OrdersService {
   // constructor() { }
 
   addProduct(product) {
-    this.arrProduct.push(product);
-    this.ordersSource.next(this.arrProduct); 
-    // this.arrProduct.forEach(function(element){
-    //   console.log(product);
+    this.filteredArrProduct = this.arrProduct.filter(elem => {
+      console.log('elem',elem)
+      console.log('elem .name', elem.name);
+      console.log('product name', product.name);
       
-    // })
-
-    // for (let i = 0; i < this.arrProduct.length; i++) {
-    // }
-    // console.log('array unicos', this.arrProductUnique);
+      
+      return elem.name !== product.name
+    })
+    console.log('filkteres', this.filteredArrProduct);
     
-    // console.log(this.arrProduct);
+    if(this.arrProduct.length > this.filteredArrProduct.length) {
+      for (let i = 0; i < this.arrProduct.length; i++) {
+        if(this.arrProduct[i].name === product.name) {
+          this.arrProduct[i]['quantity'] = this.arrProduct[i]['quantity'] + 1;
+        } else {
+            this.arrProduct.push(product);
+        }
+      }
+    }
+    
+    this.ordersSource.next(this.arrProduct);
+
+  
+    
     
   }
 }
