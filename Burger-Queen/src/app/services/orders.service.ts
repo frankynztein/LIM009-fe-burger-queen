@@ -4,15 +4,12 @@ import { BehaviorSubject } from 'rxjs';
 
 @Injectable(
   {
-  providedIn: 'root'
-}
+    providedIn: 'root'
+  }
 )
 export class OrdersService {
-  arrProduct = [{name: 'pollo', quantity:1}];
-  filteredArrProduct = [];
-  
-  // arrProductUnique = Array.from(new Set(this.arrProduct));  
-  
+  arrProduct = [];
+  filteredArrProduct:any;  
 
   private ordersSource = new BehaviorSubject([]);
   currentOrders = this.ordersSource.asObservable();
@@ -20,30 +17,24 @@ export class OrdersService {
   // constructor() { }
 
   addProduct(product) {
-    this.filteredArrProduct = this.arrProduct.filter(elem => {
-      console.log('elem',elem)
-      console.log('elem .name', elem.name);
-      console.log('product name', product.name);
-      
-      
-      return elem.name !== product.name
-    })
-    console.log('filkteres', this.filteredArrProduct);
-    
-    if(this.arrProduct.length > this.filteredArrProduct.length) {
-      for (let i = 0; i < this.arrProduct.length; i++) {
-        if(this.arrProduct[i].name === product.name) {
-          this.arrProduct[i]['quantity'] = this.arrProduct[i]['quantity'] + 1;
-        } else {
-            this.arrProduct.push(product);
-        }
-      }
-    }
-    
+    if(this.arrProduct.length === 0) {
+      this.arrProduct.push(product);      
+    } else {
+      this.filteredArrProduct = this.arrProduct.filter(elem => {
+        // console.log('elem', elem);
+        return elem.name !== product.name;
+      });    
+      if (this.arrProduct.length > this.filteredArrProduct.length) {
+        for (let i = 0; i < this.arrProduct.length; i++) {
+          if(this.arrProduct[i].name === product.name) {
+            this.arrProduct[i]['quantity'] = this.arrProduct[i]['quantity'] + 1;
+          };
+        };
+      } else {
+          this.arrProduct.push(product);
+      }; 
+    };
+    // console.log(this.arrProduct);    
     this.ordersSource.next(this.arrProduct);
-
-  
-    
-    
   }
 }
