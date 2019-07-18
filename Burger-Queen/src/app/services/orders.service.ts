@@ -28,13 +28,14 @@ export class OrdersService {
         for (let i = 0; i < this.arrProduct.length; i++) {
           if(this.arrProduct[i].name === product.name) {
             this.arrProduct[i]['quantity'] = this.arrProduct[i]['quantity'] + 1;
+            
           };
         };
       } else {
           this.arrProduct.push(product);
       }; 
     };
-    // console.log(this.arrProduct);    
+    // console.log(this.arrProduct);
     this.ordersSource.next(this.arrProduct);
   }
 }

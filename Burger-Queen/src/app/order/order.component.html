@@ -1,2 +1,35 @@
-<p>{{ORDERS}}</p>
-<p>order component</p>
+<!-- <li *ngFor= "let orderItem of ORDER">{{orderItem}}</li> -->
+
+<h3><strong>ORDEN:</strong></h3>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Producto</th>
+      <th scope="col">Cantidad</th>
+      <th scope="col">Precio Unitario</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let itemOrder of finalOrder, let i = index" >
+      <th scope="row">{{i+1}}</th>
+      <td> {{itemOrder.name}}</td>
+      <td>{{itemOrder.quantity}}</td>
+      <td>{{itemOrder.price}}</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr *ngFor="let itemOrder of finalOrder, let i = index">
+      <th>Total:</th>
+      <th></th>
+      <th></th>
+      <th>{{ itemOrder.price }}</th>
+    </tr>
+  </tfoot>
+</table>
+
+
+<!-- <div class="list-group">
+  <li class="list-group-item list-group-item-action" *ngFor="let itemOrder of finalOrder">{{itemOrder.name}} - {{itemOrder.quantity}}</li>
+</div> -->
