@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable(
-//   {
-//   providedIn: 'root'
-// }
+  {
+  providedIn: 'root'
+}
 )
 export class DataService {
 
@@ -15,5 +15,6 @@ export class DataService {
 
   changeBuyerName(buyerName: string) {
     this.buyerNameSource.next(buyerName)
+    
   }
 }

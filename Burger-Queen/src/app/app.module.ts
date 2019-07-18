@@ -35,8 +35,8 @@ import { OrderComponent } from './order/order.component';
     AngularFirestoreModule
   ],
   providers: [
-    DataService,
-    MenuService
+    // DataService,
+    // MenuService
   ],
   bootstrap: [AppComponent]
 })
