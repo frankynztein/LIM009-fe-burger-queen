@@ -21,12 +21,10 @@ export class BreakfastMenuComponent implements OnInit {
           name: this.itemsBreakfastMenu[i].name,
           price: this.itemsBreakfastMenu[i].price,
           quantity: 1}
-          
-        //  console.log(objItem)
       }
-    }  
-    // return console.log(this.productAdded)
-    this.orderService.addProduct(this.productAdded)
+    }
+    this.orderService.addProduct(this.productAdded)  
+
   }
 
   constructor(private menuService: MenuService, private orderService: OrdersService) {
@@ -39,6 +37,7 @@ export class BreakfastMenuComponent implements OnInit {
   
 
   ngOnInit() {
+  
    }
 
 }

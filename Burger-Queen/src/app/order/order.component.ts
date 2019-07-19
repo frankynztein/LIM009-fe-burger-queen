@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { OrdersService } from '../services/orders.service';
-//import { OrdersService } from '../services/orders.service';
 
 @Component({
   selector: 'app-order',
@@ -8,12 +7,14 @@ import { OrdersService } from '../services/orders.service';
   styleUrls: ['./order.component.css']
 })
 export class OrderComponent implements OnInit {
-  arrOrder:any;
+  finalOrder:any;
   constructor(private dataOrder: OrdersService) { }
 
   ngOnInit() {
-    this.dataOrder.currentOrders.subscribe(function(arrOrder){
-      console.log('holita', arrOrder);
+    this.dataOrder.currentOrders.subscribe(arrOrder => {
+      this.finalOrder = arrOrder
+      console.log('Orden lista', arrOrder);
+      // this.ORDERS = arrOrder;
     })
   }
 
