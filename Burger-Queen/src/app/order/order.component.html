@@ -1,26 +1,40 @@
+<!-- <li *ngFor= "let orderItem of ORDER">{{orderItem}}</li> -->
+
+<h3><strong>ORDEN:</strong></h3>
 
 <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Producto</th>
-        <th scope="col">Cantidad</th>
-        <th scope="col">Precio</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of finalOrder, let i = index" >
-        <th scope="row">{{i+1}}</th>
-        <td> {{item.name}}</td>
-        <td>{{item.quantity}}</td>
-        <td>{{item.price}}</td>
-      </tr>
-    </tbody>
-    <tfoot>
-        <th scope="col">Total</th>
-        <th scope="col"></th>
-        <th scope="col"></th>
-        <th scope="col">90</th>
-    </tfoot>
-  </table>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Producto</th>
+      <th scope="col">Cantidad</th>
+      <th scope="col">Precio Unitario</th>
+      <th scope="col">Precio Total</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr   *ngFor="let itemOrder of finalOrder, let i = index" >
+      <th  *ngIf="show"  scope="row">{{i+1}}</th>
+      <td  *ngIf="show"> {{itemOrder.name}}</td>
+      <td  *ngIf="show">{{itemOrder.quantity}}</td>
+      <td  *ngIf="show">{{itemOrder.price}}</td>
+      <td *ngIf="show" >{{itemOrder.priceTotal}}</td>
+      <td  ><button *ngIf="show"  (click)="itemOrder = false "  class="delete-btn">Eliminar</button></td>
+    </tr>
+  </tbody> 
+  <tfoot>
+    <tr> 
+      <th>Total:</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>{{ totalProducto | currency }}</th>
+    </tr>
+  </tfoot>
+</table>
 
+
+<!-- <div class="list-group">
+  <li class="list-group-item list-group-item-action" *ngFor="let itemOrder of finalOrder">{{itemOrder.name}} - {{itemOrder.quantity}}</li>
+</div> -->

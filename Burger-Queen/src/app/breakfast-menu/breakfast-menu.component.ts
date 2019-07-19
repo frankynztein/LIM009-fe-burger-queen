@@ -20,7 +20,8 @@ export class BreakfastMenuComponent implements OnInit {
           id: itemBreakfastID,
           name: this.itemsBreakfastMenu[i].name,
           price: this.itemsBreakfastMenu[i].price,
-          quantity: 1}
+          quantity: 1,
+          priceTotal:this.itemsBreakfastMenu[i].price}
       }
     }
     this.orderService.addProduct(this.productAdded)  

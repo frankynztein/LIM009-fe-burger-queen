@@ -12,7 +12,7 @@ export class BuyerInfoComponent implements OnInit {
   hide:boolean = true;
 
   constructor(private data: DataService) { }
-  
+ arrProduct = [];   
   takeOrder() {
     console.log(this.buyerName);
     this.data.changeBuyerName(this.buyerName)

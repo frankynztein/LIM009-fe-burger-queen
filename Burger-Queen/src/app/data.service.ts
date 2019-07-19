@@ -3,8 +3,8 @@ import { BehaviorSubject } from 'rxjs';
 
 @Injectable(
   {
-  providedIn: 'root'
-}
+    providedIn: 'root'
+  }
 )
 export class DataService {
 
