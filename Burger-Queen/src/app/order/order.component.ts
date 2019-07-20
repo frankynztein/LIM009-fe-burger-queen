@@ -15,11 +15,7 @@ export class OrderComponent implements OnInit {
   totalProducto: number;
      
   
-  deleteProducto(id){
-    this.finalOrder.filter(objArrOrden => {
-      console.log(objArrOrden.id !== id);
-      });
-    }
+
  
   // addPrices = (array) => { //TRABAJANDO CON EL PRECIO TOTAL
   //   for (let i = 0; i < this.finalOrder.length; i++) {
@@ -31,15 +27,7 @@ export class OrderComponent implements OnInit {
   //     })
   // }
 
-  addPrices = (array) => { // TRABAJANDO CON EL PRECIO TOTAL
-    for (let i = 0; i < array.length; i++) {
-      let priceQuantity = array[i].price * array[i].quantity;
-      this.emptyArray.push(priceQuantity)
-    }
-      this.totalOrder = this.emptyArray.reduce((a, b) => {
-        return a + b
-      })
-  }
+
 
   constructor(private dataOrder: OrdersService) {
     // this.dataOrder.currentOrders.subscribe(arrOrder => {
@@ -50,7 +38,9 @@ export class OrderComponent implements OnInit {
       
     // })
    }
-
+   eliminar(id: any){
+    this.dataOrder.eliminarProducto(id);//lafuncion(ingresa el id)
+  }
   ngOnInit() {  
     this.dataOrder.currentOrders.subscribe(arrOrder => {
       // console.log('Orden lista', arrOrder);
@@ -62,7 +52,8 @@ export class OrderComponent implements OnInit {
         this.totalProducto = total;
         console.log('totalProducto', this.totalProducto);
       })// TRABAJANDO CON EL PRECIO TOTAL
-
+    
+     
 
   }
 

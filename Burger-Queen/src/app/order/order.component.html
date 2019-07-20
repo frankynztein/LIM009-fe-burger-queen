@@ -15,12 +15,12 @@
   </thead>
   <tbody>
     <tr   *ngFor="let itemOrder of finalOrder, let i = index" >
-      <th  *ngIf="show"  scope="row">{{i+1}}</th>
-      <td  *ngIf="show"> {{itemOrder.name}}</td>
-      <td  *ngIf="show">{{itemOrder.quantity}}</td>
-      <td  *ngIf="show">{{itemOrder.price}}</td>
-      <td *ngIf="show" >{{itemOrder.priceTotal}}</td>
-      <td  ><button *ngIf="show"  (click)="itemOrder = false "  class="delete-btn">Eliminar</button></td>
+      <th   scope="row">{{i+1}}</th>
+      <td  > {{itemOrder.name}}</td>
+      <td  >{{itemOrder.quantity}}</td>
+      <td >{{itemOrder.price}}</td>
+      <td  >{{itemOrder.priceTotal}}</td>
+      <td  ><button   (click)="eliminar(itemOrder.id) "  class="delete-btn">Eliminar</button></td>
     </tr>
   </tbody> 
   <tfoot>

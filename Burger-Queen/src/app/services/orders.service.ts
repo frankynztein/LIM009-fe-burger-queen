@@ -11,7 +11,7 @@ import { filter } from 'rxjs/operators';
 )
 export class OrdersService {
   arrProduct = []; 
-  private ordersSource = new BehaviorSubject([]);
+  public ordersSource = new BehaviorSubject([]);
   currentOrders = this.ordersSource.asObservable();
 
   public totalData = new BehaviorSubject(0);
@@ -54,6 +54,15 @@ export class OrdersService {
        }, 0);
        this.totalData.next(this.arrCalculate);
    }
+
+
+ eliminarProducto(id){
+  this.arrProduct = this.arrProduct.filter(objArrOrden => {
+    return objArrOrden.id !== id;
+    });
+    this.ordersSource.next(this.arrProduct);
+    this.totalDePedidos()
+}
 
   /*totalOrder = 0
   addPrices = (arrProduct) => { // TRABAJANDO CON EL PRECIO TOTAL
