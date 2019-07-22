@@ -9,22 +9,27 @@
       <th scope="col">Producto</th>
       <th scope="col">Cantidad</th>
       <th scope="col">Precio Unitario</th>
+      <th scope="col">Precio Total</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let itemOrder of finalOrder, let i = index" >
       <th scope="row">{{i+1}}</th>
-      <td> {{itemOrder.name}}</td>
+      <td>{{itemOrder.name}}</td>
       <td>{{itemOrder.quantity}}</td>
       <td>{{itemOrder.price}}</td>
+      <td>{{itemOrder.priceTotal}}</td>
+      <td><button (click)="eliminar(itemOrder.id)" class="delete-btn">Eliminar</button></td>
     </tr>
-  </tbody>
+  </tbody> 
   <tfoot>
-    <tr *ngFor="let itemOrder of finalOrder, let i = index">
+    <tr> 
       <th>Total:</th>
       <th></th>
       <th></th>
-      <th>{{ itemOrder.price }}</th>
+      <th></th>
+      <th>{{ totalProducto | currency }}</th>
     </tr>
   </tfoot>
 </table>

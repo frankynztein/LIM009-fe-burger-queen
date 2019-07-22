@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-
+// import { ArrayType } from '@angular/compiler';
+// import { filter } from 'rxjs/operators';
 
 @Injectable(
   {
@@ -9,13 +10,16 @@ import { BehaviorSubject } from 'rxjs';
 )
 export class OrdersService {
   arrProduct = [];
-  filteredArrProduct:any;  
-
-  private ordersSource = new BehaviorSubject([]);
+  filteredArrProduct : any
+  arrCalculate: number;
+  
+  public ordersSource = new BehaviorSubject([]);
   currentOrders = this.ordersSource.asObservable();
 
-  // constructor() { }
-
+  public totalData = new BehaviorSubject(0);
+  totalPedidos = this.totalData.asObservable(); 
+    
+  
   addProduct(product) {
     if(this.arrProduct.length === 0) {
       this.arrProduct.push(product);      
@@ -28,7 +32,7 @@ export class OrdersService {
         for (let i = 0; i < this.arrProduct.length; i++) {
           if(this.arrProduct[i].name === product.name) {
             this.arrProduct[i]['quantity'] = this.arrProduct[i]['quantity'] + 1;
-            
+            this.arrProduct[i].priceTotal= this.arrProduct[i]['quantity']* this.arrProduct[i]['price'];    
           };
         };
       } else {
@@ -37,5 +41,23 @@ export class OrdersService {
     };
     // console.log(this.arrProduct);
     this.ordersSource.next(this.arrProduct);
+    this.totalDePedidos();
+
   }
+  totalDePedidos(){
+    this.arrCalculate = this.arrProduct.reduce((acum, obj) => {
+     return acum + obj.priceTotal;
+    }, 0);
+       this.totalData.next(this.arrCalculate);
+  }
+
+
+  eliminarProducto(id){
+    this.arrProduct = this.arrProduct.filter(objArrOrden => {
+      return objArrOrden.id !== id;
+    });
+    this.ordersSource.next(this.arrProduct);
+    this.totalDePedidos()
+  }
+
 }
