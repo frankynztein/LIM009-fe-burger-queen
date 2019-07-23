@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { OrdersService } from '../services/orders.service';
 import { MenuService } from '../services/menu.service';
 import { DataService } from '../data.service';
-// import { Timestamp } from 'rxjs/internal/operators/timestamp';
 
 @Component({
   selector: 'app-order',
