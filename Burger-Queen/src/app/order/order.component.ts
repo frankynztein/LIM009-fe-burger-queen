@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OrdersService } from '../services/orders.service';
 import { MenuService } from '../services/menu.service';
+import { DataService } from '../data.service';
 // import { Timestamp } from 'rxjs/internal/operators/timestamp';
 
 @Component({
@@ -14,8 +15,9 @@ export class OrderComponent implements OnInit {
   totalOrder:any;
   show = true;
   totalProducto: number;
+  buyerName:string;
 
-  constructor(private dataOrder: OrdersService, private menuService: MenuService) { }
+  constructor(private dataOrder: OrdersService, private menuService: MenuService, private dataName: DataService) { }
   
   eliminar(id: any){
     this.dataOrder.eliminarProducto(id); // la funcion(ingresa el id)
@@ -28,20 +30,23 @@ export class OrderComponent implements OnInit {
       // console.log('finalOrder', this.finalOrder);
     })
 
-      this.dataOrder.totalPedidos.subscribe((total:number) => {
-        this.totalProducto = total;
-        // console.log('totalProducto', this.totalProducto);
-      }) // TRABAJANDO CON EL PRECIO TOTAL
+    this.dataOrder.totalPedidos.subscribe((total:number) => {
+      this.totalProducto = total;
+      // console.log('totalProducto', this.totalProducto);
+    }) // TRABAJANDO CON EL PRECIO TOTAL
+
+    this.dataName.currentBuyerName.subscribe(buyerName => this.buyerName = buyerName)
   }
 
   sendOrder() {
     this.menuService.sendOrderToKitchen({
-      id: 'qw',
-      clientName: 'Judith',
+      clientName: this.buyerName,
       products: this.finalOrder,
-      time: '5:00pm',
+      time: new Date(),
       status: 'Pendiente',
-      total: 50
+      total: this.totalProducto
     });
   }
+
+  
 }
