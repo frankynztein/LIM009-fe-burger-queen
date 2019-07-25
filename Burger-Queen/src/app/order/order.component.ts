@@ -57,5 +57,6 @@ export class OrderComponent implements OnInit {
       status: 'Pendiente',
       total: this.totalProducto
     });
+    // this.menuService.reset()
   } 
 }
