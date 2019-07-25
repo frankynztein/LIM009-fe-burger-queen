@@ -42,7 +42,8 @@ export class MenuService {
           arr.push({
             id: element.payload.doc.id,
             name: data.name,
-            price: data.price
+            price: data.price,
+            image: data.image
           })
         })
         return arr;
@@ -56,7 +57,7 @@ export class MenuService {
       map(changes => {
       return changes.map(l => {
         const dataL = l.payload.doc.data() as Item
-        dataL.id = l.payload.doc.id;
+        dataL.id = l.payload.doc.id;        
         return dataL;
       });
     }));
@@ -64,13 +65,13 @@ export class MenuService {
 
   sendOrderToKitchen(objArray:object) {
     const orderCollection = this.angularfs.collection('orders');
-
-    // const id = this.angularfs.createId();
-    // console.log('id', id)
-
     // orderCollection.doc(id).add(objArray)
     return orderCollection.add(objArray)
   }
+
+  getDataNumeroDePedidos(){
+    return this.angularfs.collection('orders').valueChanges();
+   }
 }
 
 

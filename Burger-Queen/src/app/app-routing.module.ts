@@ -9,12 +9,12 @@ const routes: Routes = [
     path: '',
     component: HomeComponent
   },
+  // {
+  //   path: 'mesero',
+  //   component: BuyerInfoComponent
+  // },
   {
-    path: 'mesero',
-    component: BuyerInfoComponent
-  },
-  {
-    path: 'take-order',
+    path: 'mesero/take-order',
     component: TakeOrderComponent
   }
 ];

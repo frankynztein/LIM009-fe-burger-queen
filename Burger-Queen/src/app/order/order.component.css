@@ -1,5 +1,8 @@
 .delete-btn{
-  font-size: 25px;
-  color: red;
   cursor: pointer;
+  width: 16px;
+}
+
+.font-white {
+  color: white;
 }

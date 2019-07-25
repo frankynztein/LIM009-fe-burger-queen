@@ -39,7 +39,7 @@ export class OrdersService {
           this.arrProduct.push(product);
       }; 
     };
-    console.log('arrproduct', this.arrProduct);
+    // console.log('arrproduct', this.arrProduct);
     this.ordersSource.next(this.arrProduct);
     this.totalDePedidos();
 
@@ -54,6 +54,9 @@ export class OrdersService {
 
   eliminarProducto(id) {
     this.arrProduct = this.arrProduct.filter(objArrOrden => {
+      // if (objArrOrden.id === id) {
+      //   return objArrOrden.quantity = objArrOrden.quantity - 1;
+      // }
       return objArrOrden.id !== id;
     });
     this.ordersSource.next(this.arrProduct);
