@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Item } from '../models/Item';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -73,5 +73,3 @@ export class MenuService {
     return this.angularfs.collection('orders').valueChanges();
    }
 }
-
-

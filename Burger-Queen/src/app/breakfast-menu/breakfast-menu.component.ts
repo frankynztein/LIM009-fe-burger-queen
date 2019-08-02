@@ -10,7 +10,7 @@ import { OrdersService } from '../services/orders.service';
 })
 export class BreakfastMenuComponent implements OnInit {
   itemsBreakfastMenu: Item[];
-  itemBreakfast:string;
+  // itemBreakfast:string;
   productAdded:object;
 
   addItemToMenuService(itemBreakfastID) {
@@ -24,12 +24,13 @@ export class BreakfastMenuComponent implements OnInit {
           priceTotal: this.itemsBreakfastMenu[i].price}
       }
     }
-    this.orderService.addProduct(this.productAdded)
+    this.orderService.addProduct(this.productAdded);
   }
 
   constructor(private menuService: MenuService, private orderService: OrdersService) {
     this.menuService.getItemsBreakfast().subscribe(itemsB => {
       this.itemsBreakfastMenu = itemsB
+      console.log(this.itemsBreakfastMenu)
     })    
   }
 
