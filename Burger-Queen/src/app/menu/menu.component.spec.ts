@@ -29,4 +29,16 @@ describe('MenuComponent', () => {
   it('should create MenuComponent', () => {
     expect(component).toBeTruthy();
   });
+
+  it('Botón desayuno debe mostrar el menú para desayuno', () => {
+    component.openBreakfastMenu();
+    fixture.detectChanges();
+    expect(component.showBreakfast).toBe(true);
+  });
+
+  it('Botón almuerzo debe mostrar el menú para almuerzo', () => {
+    component.openLunchMenu()
+    fixture.detectChanges();
+    expect(component.showLunch).toBe(true);
+  });
 });

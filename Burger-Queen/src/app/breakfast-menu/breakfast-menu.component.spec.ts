@@ -1,7 +1,5 @@
 import { async, ComponentFixture, TestBed, getTestBed } from "@angular/core/testing";
-
 import { BreakfastMenuComponent } from "./breakfast-menu.component";
-
 import { HttpTestingController, HttpClientTestingModule } from "@angular/common/http/testing";
 import { OrdersService } from '../services/orders.service';
 import { MenuService } from '../services/menu.service';
@@ -96,7 +94,7 @@ describe('BreakfastMenuComponent', () => {
     expect(template.textContent).toEqual('Burger');
   });
 
-  it('Debería retornar el precio de producto y símbolo de dólar', () => {
+  it('Debería retornar el precio de producto', () => {
     debugElement = fixture.debugElement.query(By.css('p'));
     template = debugElement.nativeElement;
     expect(template.textContent).toEqual('Precio: $10.00')
@@ -108,50 +106,10 @@ describe('BreakfastMenuComponent', () => {
     expect(component.productAdded).toEqual({id: '1', name: 'Burger', price: 10, quantity: 1, priceTotal: 10})
   });
   
-  it('Deberia de llamar a orderService.addProduct al ejecutar addItemToMenuService', () => { //NOT WORKING
+  it('Deberia de llamar a orderService.addProduct al ejecutar addItemToMenuService', () => {
+    spyOn(serviceOrder, 'addProduct');    
     component.addItemToMenuService('12');
-    fixture.detectChanges();
-    spyOn(serviceOrder, 'addProduct');
     fixture.detectChanges();
     expect(serviceOrder.addProduct).toHaveBeenCalled();
   });
 });
-
-
-// fdescribe('BreakfastMenuComponent', () => {
-//   let component: BreakfastMenuComponent;
-//   let fixture: ComponentFixture<BreakfastMenuComponent>;
-//   let injector: TestBed;
-//   let service: AngularFirestore;
-//   let mockService: HttpTestingController;
-
-//   beforeEach(async(() => {
-//     TestBed.configureTestingModule({
-//       declarations: [ BreakfastMenuComponent ],
-//       imports: [ HttpClientTestingModule ],
-//       providers: [ AngularFirestore ]
-//     })
-//     .compileComponents();
-//     injector = getTestBed();
-//     service = injector.get(AngularFirestore);
-//     mockService = injector.get(HttpTestingController);
-
-//   }));
-
-//   beforeEach(() => {
-//     fixture = TestBed.createComponent(BreakfastMenuComponent);
-//     component = fixture.componentInstance;
-    
-//     fixture.detectChanges();
-//   });
-
-  // it('probando', () => {
-  //   let menuService = fixture.debugElement.injector.get(MenuServiceMock)
-  //   expect(component.itemsBreakfastMenu).toEqual(menuService.breakfast)
-  // })
-
-  // it('debería obtener nombres de los items del MenuService', () => {
-  //   template = fixture.debugElement.query(By.css('h5'));
-  //   expect(template.nativeElement.textContent).toEqual('')
-  // })
-// });

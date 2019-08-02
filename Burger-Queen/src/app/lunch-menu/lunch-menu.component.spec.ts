@@ -26,8 +26,9 @@ class MockMenuService {
   }
 }
 
-fdescribe('LunchMenuComponent', () => {
+describe('LunchMenuComponent', () => {
   let component: LunchMenuComponent;
+  let bebidas: DebugElement;
   let fixture: ComponentFixture<LunchMenuComponent>;
   let serviceMenu: MenuService;
   let serviceOrder: OrdersService;
@@ -55,6 +56,7 @@ fdescribe('LunchMenuComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(LunchMenuComponent);
     component = fixture.componentInstance;
+   
     fixture.detectChanges();
   });
 
@@ -88,11 +90,36 @@ fdescribe('LunchMenuComponent', () => {
     expect(component.itemsLunchMenu).toEqual(dummyMenu);
   });
 
-  it('Debería retornar el nombre del producto en la etiqueta h5', () => {
-    debugElement = fixture.debugElement.query(By.css('h5'));
-    template = debugElement.nativeElement;
-    expect(template.textContent).toEqual('Burger');
+  it('Debería imprimir el nombre del producto en una etiqueta h5', () => {
+    component.bebidas = [{
+      id: '1',
+      name: 'InkaCola',
+      price: 10,
+      image: 'https://google.com/'
+    },
+    {
+      id: '12',
+      name: 'Coca Cola',
+      price: 5,
+      image: 'https://google.com/'
+    }];
+    fixture.detectChanges()
 
-    //Como reconocer una etiqueta en particular si hay varias h5
+    bebidas = fixture.debugElement.nativeElement.querySelector('[data-id="bebidas"]')
+    expect(bebidas.children.length).toBe(2)
+    expect(fixture.debugElement.nativeElement.querySelector('[data-id="bebidas"]:nth-child(1) h5').textContent).toBe('InkaCola')
+  });
+
+  it('Debería asignar un valor a component.productAdded al ejecutar addItemToMenuService', () => {
+    component.addItemToMenuService('1', '');
+    fixture.detectChanges();
+    expect(component.productAdded).toEqual({id: '1', name: 'CheeseBurger', typeOfBurger: '', additional: '', price: 10, quantity: 1, priceTotal: 10})
+  });
+
+  it('Deberia de llamar a orderService.addProduct al ejecutar addItemToMenuService', () => { //NOT WORKING
+    spyOn(serviceOrder, 'addProduct');
+    component.addItemToMenuService('1');
+    fixture.detectChanges();
+    expect(serviceOrder.addProduct).toHaveBeenCalled();
   });
 });

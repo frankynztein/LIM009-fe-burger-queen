@@ -67,7 +67,7 @@
     <!-- BEBIDAS -->
     <button data-toggle="collapse" data-target="#bebidas" class="btn btn-dark btn-lg btn-lunch">Bebidas</button>
     <div class="container">
-        <div class="row">
+        <div class="row" data-id="bebidas">
             <div id="bebidas" class="col-6 collapse" *ngFor="let itemL of bebidas">
                 <div (click)="addItemToMenuService(itemL.id)" class="card-deck ">
                     <div class="card">
