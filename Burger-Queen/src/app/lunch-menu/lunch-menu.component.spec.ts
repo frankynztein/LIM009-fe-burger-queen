@@ -7,7 +7,6 @@ import { OrdersService } from '../services/orders.service';
 import { of } from 'rxjs';
 import { HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
 import { DebugElement } from '@angular/core';
-import { By } from '@angular/platform-browser';
 
 class MockMenuService {
   getItemsLunch() {

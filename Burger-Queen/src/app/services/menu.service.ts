@@ -63,7 +63,7 @@ export class MenuService {
     }));
   }
 
-  sendOrderToKitchen(objArray:object) {
+  sendOrderToKitchen(objArray) {
     const orderCollection = this.angularfs.collection('orders');
     // orderCollection.doc(id).add(objArray)
     return orderCollection.add(objArray)
