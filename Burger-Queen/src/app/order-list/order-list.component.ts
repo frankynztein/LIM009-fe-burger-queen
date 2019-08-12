@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuService } from '../services/menu.service';
 import Swal from 'sweetalert2'
-import { AngularFirestore} from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-order-list',
@@ -34,7 +33,6 @@ export class OrderListComponent implements OnInit {
     this.showActivePending = true
     this.showActiveReadyToServe = false;
     this.showActiveDelivery = false;
-    this.ordersPending
   }
 
   openReadyToServe() {
@@ -44,7 +42,6 @@ export class OrderListComponent implements OnInit {
     this.showActivePending = false;
     this.showActiveReadyToServe = true;
     this.showActiveDelivery = false;
-    this.ordersReadyToServe
   }
 
   openDelivery() {
@@ -54,10 +51,9 @@ export class OrderListComponent implements OnInit {
     this.showActivePending = false;
     this.showActiveReadyToServe = false;
     this.showActiveDelivery = true;
-    this.ordersDelivery
   }
 
-  constructor(private menuService: MenuService, public angularfs: AngularFirestore) { 
+  constructor(private menuService: MenuService) { 
     this.filterOrderPending();
     this.filterOrderReadyToServe();
     this.filterOrderDelivery();
@@ -127,7 +123,7 @@ export class OrderListComponent implements OnInit {
 }
   sendStatusReadyToServer(order) {
     this.menuService.updateOrderReadyToServer(order.id)
-    this.angularfs.collection("orders").doc(order.id).update({timeIntervalPR:this.timers[order.id]})
+    this.menuService.timeInterval(order, {timeIntervalPR:this.timers[order.id]})
     console.log(this.timers[order.id])
     Swal.fire({
       position: 'center',

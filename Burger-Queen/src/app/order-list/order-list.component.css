@@ -2,7 +2,6 @@
   background: black;
   width: 100%
 }
-
 .logo {
   display:block;
   margin:auto;
@@ -14,6 +13,7 @@
 .out {
   height: 50px;
   width: 50px;
+
 }
 
 footer {
@@ -31,11 +31,11 @@ footer {
 }
 
 .letter {
-  color:black
+  color:black;
 }
 
 .bg-yellow {
-  background: #fee405
+  background: #fee405;
 }
 
 .img {
@@ -43,4 +43,15 @@ footer {
   height: 25px;
   position: absolute;
   right: 0;
+}
+
+.letter {
+  size: 10px;
+  color:red;
+  position: absolute;
+  left: 0;
+}
+
+.pointer {
+  cursor: pointer;
 }

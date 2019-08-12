@@ -81,5 +81,9 @@ export class MenuService {
         })
       })
     )
-  } 
+  }
+
+  timeInterval(order, objTimeInterval) {
+    this.angularfs.collection("orders").doc(order.id).update(objTimeInterval)
+  }
 }

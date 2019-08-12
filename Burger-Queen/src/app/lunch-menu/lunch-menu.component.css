@@ -24,7 +24,7 @@ label {
   color:black
 }
 .effect:hover{
-  border: solid 4px rgb(255, 255, 0);
+  border: solid 1px rgb(255, 255, 0);
   cursor: pointer;
 }
 .effectH:hover{
