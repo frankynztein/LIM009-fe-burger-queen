@@ -110,14 +110,15 @@ describe('LunchMenuComponent', () => {
   });
 
   it('Debería asignar un valor a component.productAdded al ejecutar addItemToMenuService', () => {
-    component.addItemToMenuService('1', '');
+    component.addItemToMenuService('1', false); //REVISAR
+
     fixture.detectChanges();
-    expect(component.productAdded).toEqual({id: '1', name: 'CheeseBurger', typeOfBurger: '', additional: '', price: 10, quantity: 1, priceTotal: 10})
+    expect(component.productAdded).toEqual({id: '1', name: 'CheeseBurger', typeOfBurger: '', additional1: ' ', additional2: ' ', price: 10, quantity: 1, priceTotal: 10})
   });
 
   it('Deberia de llamar a orderService.addProduct al ejecutar addItemToMenuService', () => { //NOT WORKING
     spyOn(serviceOrder, 'addProduct');
-    component.addItemToMenuService('1');
+    component.addItemToMenuService('1', false);
     fixture.detectChanges();
     expect(serviceOrder.addProduct).toHaveBeenCalled();
   });

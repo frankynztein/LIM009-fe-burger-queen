@@ -2,6 +2,6 @@
   cursor: pointer;
 }
 .card-body {
-  height: 400px;
-  overflow: scroll;
+    height: 400px;
+    overflow: scroll;
 }

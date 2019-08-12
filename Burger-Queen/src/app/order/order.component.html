@@ -1,47 +1,59 @@
-<!-- <li *ngFor= "let orderItem of ORDER">{{orderItem}}</li> -->
-
 <div clas="col-6">
-    <div class="form-group margin-top font-white">
-      <div class="text-center p-1 mb-2 font-weight-bold margin-bottom bg-warning" id="inputGroup-sizing-sm">FECHA :
-        {{ fecha | date: 'short'}}</div>
-      <div class="text-center p-1 mb-2 font-weight-bold margin-bottom bg-warning" id="inputGroup-sizing-sm">ORDEN N°: 00{{numeroDePedidos}}</div>
-      <div class="text-center p-1 mb-2 font-weight-bold margin-bottom bg-warning" id="inputGroup-sizing-sm">
-        Cliente: <input type="text" placeholder="nombre del cliente" [(ngModel)]="buyerName"/>
-        <!-- <strong>{{ buyerName }}</strong> -->
-      </div>
+  <div class="row">
+  <div class="col-12 form-group margin-top font-white">
+    <div *ngIf="s <= 9 && m>=10 " class="text-center p-1 mb-2 font-weight-bold margin-bottom bg-warning"
+      id="inputGroup-sizing-sm"> FECHA : {{ fecha | date:'dd-MM-yyyy'}} - {{h}}:{{m}}:0{{s}}</div>
+    <div *ngIf="s >= 10 && m<=9 " class="text-center p-1 mb-2 font-weight-bold margin-bottom bg-warning"
+      id="inputGroup-sizing-sm"> FECHA : {{ fecha | date:'dd-MM-yyyy'}} - {{h}}:0{{m}}:{{s}}</div>
+    <div *ngIf="s <= 9 && m<=9 " class="text-center p-1 mb-2 font-weight-bold margin-bottom bg-warning"
+      id="inputGroup-sizing-sm"> FECHA : {{ fecha | date:'dd-MM-yyyy'}} - {{h}}:0{{m}}:0{{s}}</div>
+    <div *ngIf="s >= 10 && m>=10 " class="text-center p-1 mb-2 font-weight-bold margin-bottom bg-warning"
+      id="inputGroup-sizing-sm"> FECHA : {{ fecha | date:'dd-MM-yyyy'}} - {{h}}:{{m}}:{{s}}</div>
+    <div class="text-center p-1 mb-2 font-weight-bold margin-bottom bg-warning" id="inputGroup-sizing-sm">ORDEN N°:
+      00{{numeroDePedidos}}</div>
+    <div class="text-center p-1 mb-2 font-weight-bold margin-bottom bg-warning" id="inputGroup-sizing-sm">
+      Cliente: <input type="text" placeholder="nombre del cliente" [(ngModel)]="buyerName" />
+      <!-- <strong>{{ buyerName }}</strong> -->
     </div>
-  
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Producto</th>
-          <th scope="col">Cantidad</th>
-          <th scope="col">Precio Unitario</th>
-          <th scope="col">Subtotal</th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let itemOrder of finalOrder, let i = index">
-          <th scope="row">{{i+1}}</th>
-          <td>{{itemOrder.name}} {{itemOrder.additional}}</td>
-          <td>{{itemOrder.quantity}}</td>
-          <td>{{itemOrder.price}}</td>
-          <td>{{itemOrder.priceTotal}}</td>
-          <td><img (click)="eliminar(i)" class="delete-btn" src='../../assets/delete-btn.png'/></td>
-        </tr>
-      </tbody>
-      <tfoot>
-        <tr>
-          <th>Total:</th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th>{{totalProducto | currency}}</th>
-        </tr>
-      </tfoot>
-    </table>
   </div>
-  <button   class="btn btn-success col align-self-end font-weight-bold font-white" (click)="sendOrder()"  [disabled]="!buyerName">Enviar orden</button>
-  <br><br><br><br>
+</div>
+<div class="row">
+  <div class="col-12">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Producto</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Precio Unitario</th>
+        <th scope="col">Subtotal</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let itemOrder of finalOrder, let i = index">
+        <th scope="row">{{i+1}}</th>
+        <td>{{itemOrder.name}} {{itemOrder.additional1}} {{itemOrder.additional2}}</td>
+        <td> <input type="number" style="max-width:50px" [ngModel]="itemOrder.quantity" min=1 max=100 #newQuantity
+            (click)="addNewQuantity(i, newQuantity.value)"></td>
+        <td>{{itemOrder.price}}</td>
+        <td>{{itemOrder.priceTotal}}</td>
+        <td><img (click)="eliminar(i)" class="delete-btn" src='../../assets/delete-btn.png' /></td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th>Total:</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th>{{totalProducto | currency}}</th>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+</div>
+</div>
+<button class="btn btn-success col align-self-end font-weight-bold font-black" (click)="sendOrder()"
+  [disabled]="!buyerName">Enviar orden</button>
+<br><br><br><br>

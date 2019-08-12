@@ -31,7 +31,7 @@ const fixtureData = [
   }
 ]
 
-fdescribe('MenuService', () => {
+describe('MenuService', () => {
 
   let serviceMenu: MenuService;
   let angularFirestore: AngularFirestoreMock;

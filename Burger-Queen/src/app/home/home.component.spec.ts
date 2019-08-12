@@ -31,7 +31,7 @@ describe('HomeComponent', () => {
     expect(component.title).toEqual('Burger Queen');
   });
 
-  it(`deberia de renderizar title en un h1 tag`, () => {
-    expect(titleElement.nativeElement.textContent).toEqual('Burger Queen');
-  });
+  // it(`deberia de renderizar title en un h1 tag`, () => {
+  //   expect(titleElement.nativeElement.textContent).toEqual('Burger Queen');
+  // });
 });

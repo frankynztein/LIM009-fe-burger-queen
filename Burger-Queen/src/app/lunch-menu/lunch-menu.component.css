@@ -1,7 +1,3 @@
-.lunch-img, .card {
-  cursor: pointer;
-}
-
 .btn-lunch {
   font-weight: bold;
   margin-bottom: 3%;
@@ -16,4 +12,21 @@
 label {
   padding-left:0 !important;
   margin-left:0 !important;
+}
+
+.card-body{
+  padding: 0%
+}
+.border-trans{
+  border: white
+}
+.font-black{
+  color:black
+}
+.effect:hover{
+  border: solid 4px rgb(255, 255, 0);
+  cursor: pointer;
+}
+.effectH:hover{
+  border: solid 1px rgb(255, 255, 0);
 }

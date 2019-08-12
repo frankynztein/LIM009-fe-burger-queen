@@ -24,11 +24,14 @@ export class OrdersService {
   addProduct(product) {
     if (this.arrProduct.length === 0) {
       this.arrProduct.push(product);
+      if (product.additional2 === "con queso" || product.additional1 === "con huevo") {
+        product.price = product.price + 1;
+        product.priceTotal = product['quantity'] * product.price;
+      }
     } else {
       this.filteredArrProduct = this.arrProduct.filter(elem => {
-        return (elem.name !== product.name  || ( elem.name === product.name && product.additional === "con huevo" ) || (elem.name === product.name && product.additional === "con queso"  ));
+        return (elem.name !== product.name || (elem.name === product.name && product.additional1 === "con huevo") || (elem.name === product.name && product.additional2 === "con queso") || (elem.name === product.name && product.additional2 === "con queso" && product.additional1 === "con huevo") || (elem.name === product.name && product.additional2 === " " && product.additional1 === " "));
       });
-      
       if (this.arrProduct.length > this.filteredArrProduct.length) {
         for (let i = 0; i < this.arrProduct.length; i++) {
           if (this.arrProduct[i].name === product.name) {
@@ -37,21 +40,26 @@ export class OrdersService {
           }
         };
       } else {
-          if (product.additional === "con queso" || product.additional === "con huevo" ) {
-            product.price = product.price + 1;
-            product.priceTotal = product['quantity'] * product.price;
-          }
-          this.arrProduct.push(product);
-        };
+        if (product.additional2 === "con queso" && product.additional1 === "con huevo") {
+          product.price = product.price + 2;
+          product.priceTotal = product['quantity'] * product.price;
+        } else if (product.additional2 === "con queso" || product.additional1 === "con huevo"){
+          product.price = product.price + 1;
+          product.priceTotal = product['quantity'] * product.price;
+        }
+        this.arrProduct.push(product);
+      };
     };
     this.ordersSource.next(this.arrProduct);
     this.totalDePedidos();
+
   }
 
   totalDePedidos() {
     this.arrCalculate = this.arrProduct.reduce((acum, obj) => {
       return acum + obj.priceTotal;
     }, 0);
+
     this.totalData.next(this.arrCalculate);
   }
 
@@ -61,6 +69,7 @@ export class OrdersService {
     }
     this.ordersSource.next(this.arrProduct)
   }
+
   eliminarProducto(index) {
     for (let i = 0; i < this.arrProduct.length; i++) {
       if (i === index) {
@@ -79,5 +88,16 @@ export class OrdersService {
 
   resetOrder() {
     return this.ordersSource.next(this.arrProduct = [])
+  }
+
+  acumuladorDePedidos(index, cantidadModificada) {
+    for (let i = 0; i < this.arrProduct.length; i++) {
+      if (i === index) {
+        this.arrProduct[i].quantity = parseInt(cantidadModificada);
+        this.arrProduct[i].priceTotal = this.arrProduct[i].quantity * this.arrProduct[i].price
+      }
+    }
+    this.ordersSource.next(this.arrProduct);
+    this.totalDePedidos()
   }
 }

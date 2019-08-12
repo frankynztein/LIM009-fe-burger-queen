@@ -58,13 +58,6 @@ describe('OrderComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('Debería actualizar la fecha al iniciar el componente', () => {
-    let date = new Date()
-    component.ngOnInit()
-    fixture.detectChanges();
-    expect(component.fecha).toEqual(date);
-  });
-
   it('Debería restar -1 a la cantidad del producto y restar al precioTotal', () => {
     serviceOrder.arrProduct = [{
       id: '1',
@@ -89,7 +82,7 @@ describe('OrderComponent', () => {
     expect(serviceOrder.arrProduct[1].priceTotal).toBe(10)
   });
 
-  it('Debería enviar orden a -la cocina- invocando sendOrder', fakeAsync(() => {
+  it('Debería enviar orden a -la cocina- invocando sendOrder y mostrando alert', fakeAsync(() => {
     const objData = {
           clientName: 'Fran',
           products: [{
@@ -115,11 +108,13 @@ describe('OrderComponent', () => {
 
     spyOn(serviceMenu, 'sendOrderToKitchen').and.returnValue(Promise.resolve(objData));
     spyOn(serviceOrder, 'resetOrder');
+    spyOn(component, 'orderAlert')
     component.sendOrder();
     tick();
     fixture.detectChanges();
     expect(serviceMenu.sendOrderToKitchen).toHaveBeenCalled();
     expect(serviceOrder.resetOrder).toHaveBeenCalled();
+    expect(component.orderAlert).toHaveBeenCalled()
   }));
 
   it('Debería registrar el número de orden', () => {

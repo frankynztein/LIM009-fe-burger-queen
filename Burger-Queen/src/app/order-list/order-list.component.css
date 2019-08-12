@@ -1,0 +1,46 @@
+.navbar {
+  background: black;
+  width: 100%
+}
+
+.logo {
+  display:block;
+  margin:auto;
+  padding: 0;
+  height: 60px;
+  width: 120px;
+}
+
+.out {
+  height: 50px;
+  width: 50px;
+}
+
+footer {
+  background-color: black;
+  color:white;
+  position:fixed;
+  bottom:0;
+  width: 100%;
+}
+
+
+.card-body {
+  height: 250px;
+  overflow: scroll;
+}
+
+.letter {
+  color:black
+}
+
+.bg-yellow {
+  background: #fee405
+}
+
+.img {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  right: 0;
+}
