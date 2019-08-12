@@ -10,12 +10,11 @@ import { HttpTestingController, HttpClientTestingModule } from '@angular/common/
 
 class MockMenuService {
   getDataNumeroDePedidos() {
-    return of([{}])
+    return of([]);
   }
   sendOrderToKitchen() {
     return Promise.resolve({})
   }
-  
 }
 
 describe('OrderComponent', () => {
@@ -34,9 +33,7 @@ describe('OrderComponent', () => {
       providers: [ 
         OrdersService,
         DataService,
-
         { provide:  MenuService, useClass: MockMenuService }
-
       ]
     })
     .compileComponents();
@@ -90,10 +87,6 @@ describe('OrderComponent', () => {
     fixture.detectChanges()
     expect(serviceOrder.arrProduct[1].quantity).toBe(2)
     expect(serviceOrder.arrProduct[1].priceTotal).toBe(10)
-
-    // serviceOrder.eliminarProducto(1)
-    // expect(serviceOrder.arrProduct[1].quantity).toBe(2)
-    // expect(serviceOrder.arrProduct[1].priceTotal).toBe(10)
   });
 
   it('Debería enviar orden a -la cocina- invocando sendOrder', fakeAsync(() => {
@@ -118,7 +111,8 @@ describe('OrderComponent', () => {
           time: new Date(),
           status: 'Pendiente',
           total: 35
-        }  
+        };
+
     spyOn(serviceMenu, 'sendOrderToKitchen').and.returnValue(Promise.resolve(objData));
     spyOn(serviceOrder, 'resetOrder');
     component.sendOrder();
@@ -128,5 +122,34 @@ describe('OrderComponent', () => {
     expect(serviceOrder.resetOrder).toHaveBeenCalled();
   }));
 
+  it('Debería registrar el número de orden', () => {
+    const dataPedidos = [{
+      clientName: 'Fran',
+      products: [{
+        id: '1',
+        name: 'CheeseBurger',
+        price: 10,
+        image: 'https://google.com/',
+        quantity: 2,
+        priceTotal: 20
+      },
+      {
+        id: '12',
+        name: 'Coca Cola',
+        price: 5,
+        image: 'https://google.com/',
+        quantity: 3,
+        priceTotal: 15
+      }],
+      time: new Date(),
+      status: 'Pendiente',
+      total: 35
+    }];
 
+    spyOn(serviceMenu, 'getDataNumeroDePedidos').and.returnValue(of(dataPedidos))
+    component.registrarNumeroDeOrden()
+    fixture.detectChanges()
+    expect(serviceMenu.getDataNumeroDePedidos).toHaveBeenCalled()
+    expect(component.numeroDePedidos).toBe(2)
+  });
 });

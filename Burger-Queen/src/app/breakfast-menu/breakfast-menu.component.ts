@@ -29,8 +29,7 @@ export class BreakfastMenuComponent implements OnInit {
 
   constructor(private menuService: MenuService, private orderService: OrdersService) {
     this.menuService.getItemsBreakfast().subscribe(itemsB => {
-      this.itemsBreakfastMenu = itemsB
-      console.log(this.itemsBreakfastMenu)
+      this.itemsBreakfastMenu = itemsB;
     })    
   }
 

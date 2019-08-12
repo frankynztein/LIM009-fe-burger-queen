@@ -26,9 +26,9 @@ export class OrdersService {
       this.arrProduct.push(product);
     } else {
       this.filteredArrProduct = this.arrProduct.filter(elem => {
-        // console.log('elem', elem);
         return (elem.name !== product.name  || ( elem.name === product.name && product.additional === "con huevo" ) || (elem.name === product.name && product.additional === "con queso"  ));
       });
+      
       if (this.arrProduct.length > this.filteredArrProduct.length) {
         for (let i = 0; i < this.arrProduct.length; i++) {
           if (this.arrProduct[i].name === product.name) {
@@ -44,10 +44,8 @@ export class OrdersService {
           this.arrProduct.push(product);
         };
     };
-    // console.log('arrproduct', this.arrProduct);
     this.ordersSource.next(this.arrProduct);
     this.totalDePedidos();
-
   }
 
   totalDePedidos() {
@@ -80,8 +78,6 @@ export class OrdersService {
   }
 
   resetOrder() {
-    console.log('reset')
     return this.ordersSource.next(this.arrProduct = [])
   }
-
 }

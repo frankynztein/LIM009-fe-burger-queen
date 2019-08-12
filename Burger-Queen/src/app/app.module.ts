@@ -1,8 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { DataService } from './data.service';
-import { MenuService } from './services/menu.service';
 
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';

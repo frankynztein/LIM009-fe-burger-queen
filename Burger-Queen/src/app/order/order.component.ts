@@ -44,7 +44,7 @@ export class OrderComponent implements OnInit {
   registrarNumeroDeOrden() {
     this.menuService.getDataNumeroDePedidos().subscribe(dataPedidos => {
       this.numeroDePedidos = dataPedidos.length + 1;
-    })
+    });
   }
 
   sendOrder() {
@@ -55,7 +55,6 @@ export class OrderComponent implements OnInit {
       status: 'Pendiente',
       total: this.totalProducto
     }).then(elem => this.dataOrder.resetOrder());
-    this.buyerName = "";
     this.totalProducto = 0
     alert("Orden enviada")
   }
