@@ -1,10 +1,12 @@
-.logo{
+.logo {
   /* width: 30%;
   height: 20%; */
   display:block;
   margin:auto;
+  padding-top: 18%;
+  padding-bottom: 8%;
 }
-.content{
+.content {
   position: relative
 }
 .btn-home-container {
@@ -14,21 +16,26 @@
   justify-content: space-evenly;
   
 }
-.btn{
-  color: white;
+.btn {
+  color: black;
   font-size: 24px;
   width: 200px;
   height: 60px;
 }
 
-.home-container{
-  background-image: url(../../assets/logoBurgerQueen.png);
+.padding-btn {
+  padding-bottom: 5%;
+}
+
+.home-container {
+  background-image: url(../../assets/Fondo-Home.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  background-position: center center;
+  /* background-position: center center; */
+  background-position: absolute;
 }
-.overlay-itro{
+.overlay-itro {
   background-color: rgba(0, 0, 0, 0.527);
   position: absolute;
   height: 100%;
