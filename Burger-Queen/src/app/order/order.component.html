@@ -9,11 +9,10 @@
       id="inputGroup-sizing-sm"> FECHA : {{ fecha | date:'dd-MM-yyyy'}} - {{h}}:0{{m}}:0{{s}}</div>
     <div *ngIf="s >= 10 && m>=10 " class="text-center p-1 mb-2 font-weight-bold margin-bottom bg-warning"
       id="inputGroup-sizing-sm"> FECHA : {{ fecha | date:'dd-MM-yyyy'}} - {{h}}:{{m}}:{{s}}</div>
-    <div class="text-center p-1 mb-2 font-weight-bold margin-bottom bg-warning" id="inputGroup-sizing-sm">ORDEN N°:
+    <div class="text-center p-1 mb-2 font-weight-bold margin-bottom bg-warning" id="inputGroup-sizing-sm">Orden N°:
       00{{numeroDePedidos}}</div>
     <div class="text-center p-1 mb-2 font-weight-bold margin-bottom bg-warning" id="inputGroup-sizing-sm">
-      Cliente: <input type="text" placeholder="nombre del cliente" [(ngModel)]="buyerName" />
-      <!-- <strong>{{ buyerName }}</strong> -->
+      Cliente: <input type="text" placeholder="Nombre del cliente" [(ngModel)]="buyerName" />
     </div>
   </div>
 </div>
